@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         backgroundColor: '#eae9e8ef',
         borderTopLeftRadius: 80
-
+        
     },
     heading:{
         textAlign: 'center',
