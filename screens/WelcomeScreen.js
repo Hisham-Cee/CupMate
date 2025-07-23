@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
 
-function WelcomeScreen(){
+function WelcomeScreen({navigation}){
     return (
         <>
         <StatusBar style="light" />
@@ -12,7 +12,7 @@ function WelcomeScreen(){
         <View style={styles.rootContainer}>
             <Text style={styles.heading}>Coffee so good, your taste buds will love it.</Text>
             <Text style={styles.subHeading}>The best grain, the finest roast, the powerful flavor.</Text>
-            <Pressable style={styles.button}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.buttonText}>Get Started</Text>
             </Pressable>
         </View>
