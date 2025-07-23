@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
-function SignUpScreen(){
+function SignUpScreen({navigation}){
     return(
         <>
         <StatusBar style="light" />
@@ -23,10 +23,9 @@ function SignUpScreen(){
                 <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </Pressable>
-                <View style={styles.footer}>
-                    <Text style={styles.footerTxt}>Already have an account? <Text style={styles.footerButtonTxt}>Log In</Text>
-                    </Text>
-                </View>
+                <Pressable style={styles.footer} onPress={() => navigation.navigate('Login')}>
+                    <Text>Already have an account? Log In</Text>
+                </Pressable>
             </View>
         </View>
         </>
@@ -90,11 +89,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    footerTxt:{
-        
-    },
-    footerButton:{},
-    footerButtonTxt:{
-        
-    }
 });
