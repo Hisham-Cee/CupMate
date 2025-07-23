@@ -23,7 +23,7 @@ function SignUpScreen({navigation}){
                 <Pressable style={styles.button}>
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </Pressable>
-                <Pressable style={styles.footer} onPress={() => navigation.navigate('Login')}>
+                <Pressable style={styles.footer} onPress={() => navigation.reset({index: 0, routes: [{ name: 'Login' }]})}>
                     <Text>Already have an account? Log In</Text>
                 </Pressable>
             </View>

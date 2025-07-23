@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 function LoginScreen({navigation}){
+    
     return(
         <>
         <StatusBar style="light" />
@@ -15,7 +16,7 @@ function LoginScreen({navigation}){
                 <TextInput style={styles.emailInput}/>
                 <Text style={styles.password}>Password</Text>
                 <TextInput style={styles.passwordInput}/>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={()=> navigation.navigate('Home')}>
                     <Text style={styles.buttonText}>Login</Text>
                 </Pressable>
                 <Pressable style={styles.footer} onPress={()=> navigation.navigate('SignUp')}>

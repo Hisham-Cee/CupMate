@@ -12,7 +12,7 @@ function WelcomeScreen({navigation}){
         <View style={styles.rootContainer}>
             <Text style={styles.heading}>Coffee so good, your taste buds will love it.</Text>
             <Text style={styles.subHeading}>The best grain, the finest roast, the powerful flavor.</Text>
-            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
+            <Pressable style={styles.button} onPress={() => navigation.replace('Login')}>
                 <Text style={styles.buttonText}>Get Started</Text>
             </Pressable>
         </View>
