@@ -1,7 +1,31 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 function SignUpScreen({navigation}){
+
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPass, setConfirmPass] = useState();
+
+    const signUpHandler= async() =>{
+        await AsyncStorage.setItem('userName', name);
+        await AsyncStorage.setItem('userEmail', email);
+        await AsyncStorage.setItem('userPhoneNumber', phoneNumber);
+        await AsyncStorage.setItem('userPassword', password);
+        await AsyncStorage.setItem('userConfirmPass', confirmPass);
+        if(name && email && phoneNumber && password && confirmPass && password === confirmPass){
+            navigation.navigate('Home');
+        } else {
+            Alert.alert('Invalid !', 'Please fill all the details');
+        }
+    };
+
+    
+
     return(
         <>
         <StatusBar style="light" />
@@ -11,16 +35,36 @@ function SignUpScreen({navigation}){
             </View>
             <View style={styles.subContainer}>
                 <Text style={styles.inputName}>Name</Text>
-                <TextInput style={styles.inputBox}/>
+                <TextInput 
+                    value={name}
+                    onChangeText={setName}
+                    style={styles.inputBox}
+                />
                 <Text style={styles.inputName}>Email</Text>
-                <TextInput style={styles.inputBox}/>
+                <TextInput 
+                    value={email}
+                    onChangeText={setEmail}
+                    style={styles.inputBox}
+                />
                 <Text style={styles.inputName}>Phone Number</Text>
-                <TextInput style={styles.inputBox}/>
+                <TextInput 
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
+                    style={styles.inputBox}
+                />
                 <Text style={styles.inputName}>Password</Text>
-                <TextInput style={styles.inputBox}/>
+                <TextInput 
+                    value={password}
+                    onChangeText={setPassword}
+                    style={styles.inputBox}
+                />
                 <Text style={styles.inputName}>Confirm Password</Text>
-                <TextInput style={styles.inputBox}/>
-                <Pressable style={styles.button}>
+                <TextInput 
+                    value={confirmPass}
+                    onChangeText={setConfirmPass}
+                    style={styles.inputBox}
+                />
+                <Pressable style={styles.button} onPress={signUpHandler}>
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </Pressable>
                 <Pressable style={styles.footer} onPress={() => navigation.reset({index: 0, routes: [{ name: 'Login' }]})}>
