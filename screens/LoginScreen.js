@@ -1,7 +1,22 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 function LoginScreen({navigation}){
+
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const loginHandler = async ()=> {
+       const storedEmail = await AsyncStorage.getItem('userEmail');
+       const storedPassword = await AsyncStorage.getItem('userPassword');
+        if(storedEmail === email && storedPassword === password){
+            navigation.navigate('Home');
+        } else{
+            Alert.alert('Error', 'Invalid email or password');
+        };
+    };
     
     return(
         <>
@@ -13,10 +28,19 @@ function LoginScreen({navigation}){
             <View style={styles.subContainer}>
                 <Text style={styles.heading}>Login</Text>
                 <Text style={styles.email}>Email</Text>
-                <TextInput style={styles.emailInput}/>
+                <TextInput 
+                    value={email}
+                    onChangeText={setEmail}
+                    style={styles.emailInput}
+                />
                 <Text style={styles.password}>Password</Text>
-                <TextInput style={styles.passwordInput}/>
-                <Pressable style={styles.button} onPress={()=> navigation.navigate('Home')}>
+                <TextInput 
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                    style={styles.passwordInput}
+                />
+                <Pressable style={styles.button} onPress={loginHandler}>
                     <Text style={styles.buttonText}>Login</Text>
                 </Pressable>
                 <Pressable style={styles.footer} onPress={()=> navigation.navigate('SignUp')}>
