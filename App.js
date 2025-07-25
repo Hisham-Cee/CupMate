@@ -5,7 +5,7 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import { useEffect, useState } from "react";
-import HomeScreen from "./screens/HomeScreen";
+import BottomTabNavigator from "./navigation/BottomTabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +35,7 @@ export default function App() {
         <Stack.Screen name="Welcome" component={WelcomeScreen}/>
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={BottomTabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
