@@ -19,12 +19,12 @@ function SignUpScreen({navigation}){
         await AsyncStorage.setItem('userConfirmPass', confirmPass);
         if(name && email && phoneNumber && password && confirmPass && password === confirmPass){
             navigation.navigate('Home');
+            console.log(email, password);
         } else {
             Alert.alert('Invalid !', 'Please fill all the details');
         }
+        
     };
-
-    
 
     return(
         <>
@@ -51,6 +51,7 @@ function SignUpScreen({navigation}){
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
                     style={styles.inputBox}
+                    keyboardType="number-pad"
                 />
                 <Text style={styles.inputName}>Password</Text>
                 <TextInput 
