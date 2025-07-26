@@ -6,6 +6,8 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import { useEffect, useState } from "react";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
+import ProfileScreen from "./screens/ProfileScreen";
+import DetailsViewScreen from "./screens/DetailsViewScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,8 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Home" component={BottomTabNavigator} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Details" component={DetailsViewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

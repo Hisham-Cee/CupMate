@@ -1,11 +1,13 @@
 import { Image, StyleSheet, View, Text, Pressable } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function Card({imageSource, rating, drinkName, desc, amount}){
+function Card({imageSource, rating, drinkName, desc, amount, navigation}){
     return(
         <View style={styles.rootContainer}>
             <View style={styles.imgContainer}>
+                <Pressable onPress={()=> navigation.navigate('Details')}>
                 <Image source={imageSource} style={styles.img}/>
+                </Pressable>
                 <View style={styles.ratingContainer}>
                     <Ionicons name="star" size={10} color='#feab04ff' />
                     <Text style={styles.starText}>{rating}</Text>

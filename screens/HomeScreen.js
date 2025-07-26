@@ -3,12 +3,25 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, FlatLi
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Card from "../components/Card";
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-function HomeScreen(){
+function HomeScreen({navigation}){
     const [selectedCategory, setSelectedCategory] = useState("Cappuccino");
     const categories = ["Cappuccino", "Macchiato", "Latte", "Americano", "Mochas"];
+
+    // useEffect(() => {
+    //     getItemList();
+    // }, []);
+    
+    // const getItemList = () =>{
+    //      const URL = "https://fakestoreapi.com/products";
+    //      fetch(URL).then(res =>{
+    //         return res.json()
+    //      }).then(data =>{
+    //         console.log(data);
+    //      })
+    // }
 
     const cardData = [
         {
@@ -77,7 +90,7 @@ function HomeScreen(){
                             <Text style={styles.labelText}>Location</Text>
                             <Text style={styles.locationText}>Bilzen, Tanjungbalai v</Text>
                         </View>
-                        <Pressable>
+                        <Pressable onPress={()=> navigation.navigate('Profile')}>
                             <Ionicons name="person-circle-outline" size={45} color='#fff'/>
                         </Pressable>
                     </View>
@@ -132,7 +145,7 @@ function HomeScreen(){
                 
                 <View style={styles.lightSection2} >
                     <FlatList
-                        style={{flex: 1}}
+                        style={{flex: 1,}}
                         data={cardData}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => (
@@ -142,6 +155,7 @@ function HomeScreen(){
                                 drinkName={item.drinkName}
                                 desc={item.desc}
                                 amount={item.amount}
+                                navigation={navigation}
                             />
                         )}
                         numColumns={2}
@@ -221,7 +235,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         paddingTop:10,
     },
-    imgContainer:{
+    imgContainer:{ 
         height: 200,
         justifyContent: 'center',
         alignItems: 'center',
