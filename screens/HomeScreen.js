@@ -58,21 +58,74 @@ function HomeScreen({navigation}){
         },
         {
             id: '5',
-            imageSource: require('../assets/images/Cappuccino.png'),
+            imageSource: require('../assets/images/Macchiato1.png'),
+            rating: '4.5',
+            drinkName: 'Macchiato',
+            desc: 'Caramel',
+            amount: '3.78',
+        },
+        {
+            id: '6',
+            imageSource: require('../assets/images/Macchiato2.png'),
             rating: '4.8',
-            drinkName: 'Cappuccino',
+            drinkName: 'Macchiato',
+            desc: 'Iced',
+            amount: '4.34',
+        },
+        {
+            id: '7',
+            imageSource: require('../assets/images/Macchiato3.png'),
+            rating: '4.9',
+            drinkName: 'Macchiato',
+            desc: 'Hazelnut',
+            amount: '4.53',
+        },
+        {
+            id: '8',
+            imageSource: require('../assets/images/Macchiato4.png'),
+            rating: '4.6',
+            drinkName: 'Macchiato',
+            desc: 'Vanilla',
+            amount: '4.53',
+        },
+        {
+            id: '9',
+            imageSource: require('../assets/images/Latte1.png'),
+            rating: '4.7',
+            drinkName: 'Latte',
+            desc: 'Cinnamon',
+            amount: '4.89',
+        },
+        {
+            id: '10',
+            imageSource: require('../assets/images/Latte2.png'),
+            rating: '4.5',
+            drinkName: 'Latte',
+            desc: 'Vanilla',
+            amount: '3.75',
+        },
+        {
+            id: '11',
+            imageSource: require('../assets/images/Frame3.png'),
+            rating: '4.9',
+            drinkName: 'Latte',
             desc: 'with Chocolate',
             amount: '4.53',
         },
         {
-            id: '6',
-            imageSource: require('../assets/images/Cappuccino.png'),
+            id: '12',
+            imageSource: require('../assets/images/Frame4.png'),
             rating: '4.8',
-            drinkName: 'Cappuccino',
+            drinkName: 'Latte',
             desc: 'with Chocolate',
             amount: '4.53',
         },
     ];
+
+    const filteredData = cardData.filter(
+        (item) => item.drinkName === selectedCategory
+        );
+
 
     return(
         <>
@@ -146,7 +199,7 @@ function HomeScreen({navigation}){
                 <View style={styles.lightSection2} >
                     <FlatList
                         style={{flex: 1,}}
-                        data={cardData}
+                        data={filteredData}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item }) => (
                             <Card
